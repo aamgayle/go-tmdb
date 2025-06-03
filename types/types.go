@@ -29,6 +29,10 @@ type TMDBReqProps struct {
 }
 
 func NewHTTPRequestFromProps(props *TMDBReqProps) (*http.Request, error) {
+	if props == nil {
+		return nil, fmt.Errorf("no props provided")
+	}
+
 	method := ""
 
 	switch props.Method {

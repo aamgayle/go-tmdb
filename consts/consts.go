@@ -98,6 +98,7 @@ const (
 	PageURL  = "&page="
 	LangURL  = "&language="
 	IncludeAdult
+	KeywordQuery = "&keyword="
 )
 
 // TODO: Properly name these sections

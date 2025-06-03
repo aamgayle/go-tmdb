@@ -26,6 +26,6 @@ func WithBaseURL(url string) func(*types.TMDBReqProps) {
 
 func WithKeyword(keyword string) func(*types.TMDBReqProps) {
 	return func(props *types.TMDBReqProps) {
-		props.URL += consts.KeywordURL
+		props.URL += fmt.Sprintf("%s%s%s", consts.KeywordURL, consts.QueryURL, keyword)
 	}
 }
