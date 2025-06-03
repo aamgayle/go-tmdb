@@ -1,4 +1,4 @@
-package gotmdb_test
+package types_test
 
 import (
 	"testing"
@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestGoTmdb(t *testing.T) {
+func TestTypes(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "GoTmdb Suite")
+	RunSpecs(t, "Types Suite")
 }
