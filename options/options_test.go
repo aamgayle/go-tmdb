@@ -10,7 +10,7 @@ import (
 const (
 	protocol         = "https://"
 	testHost         = "www.testurl.com"
-	testSudDirectory = "/1/test/"
+	testSudDirectory = "/1/test"
 )
 
 var _ = Describe("Options tests", func() {
@@ -53,6 +53,19 @@ var _ = Describe("Options tests", func() {
 			Expect(err).To(BeNil())
 			Expect(tmdbReq.URL.RawQuery).To(ContainSubstring("&page=1"))
 			Expect(tmdbReq.URL.RawQuery).To(ContainSubstring("query=keyword"))
+		})
+	})
+
+	Context("When using the credit ID option function", func() {
+		It("should add the credit ID ", func() {
+			options := []func(*TMDBReqProps){
+				options.WithBaseURL(protocol + testHost + testSudDirectory),
+				options.WithCreditID("credit_id"),
+			}
+
+			tmdbReq, err := NewTMDBRequest(options...)
+			Expect(err).To(BeNil())
+			Expect(tmdbReq.URL.Path).To(ContainSubstring("/credit/credit_id"))
 		})
 	})
 })

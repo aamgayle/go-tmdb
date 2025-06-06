@@ -29,3 +29,10 @@ func WithKeyword(keyword string) func(*types.TMDBReqProps) {
 		props.URL += fmt.Sprintf("%s%s%s", consts.KeywordURL, consts.QueryURL, keyword)
 	}
 }
+
+// Credit options
+func WithCreditID(credit_id string) func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s/%s", consts.CreditURL, credit_id)
+	}
+}
