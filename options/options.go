@@ -2,6 +2,7 @@ package options
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/aamgayle/gotmdb/consts"
 	"github.com/aamgayle/gotmdb/types"
@@ -34,5 +35,36 @@ func WithKeyword(keyword string) func(*types.TMDBReqProps) {
 func WithCreditID(credit_id string) func(*types.TMDBReqProps) {
 	return func(props *types.TMDBReqProps) {
 		props.URL += fmt.Sprintf("%s/%s", consts.CreditURL, credit_id)
+	}
+}
+
+// Date Options
+func WithEndDate(date time.Time) func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s", consts.EndDateURL, date.Format("2006-01-02"))
+	}
+}
+
+func WithStartDate(date time.Time) func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s", consts.StartDateURL, date.Format("2006-01-02"))
+	}
+}
+
+func WithMovieChanges() func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s", consts.MovieURL, consts.ChangesURL)
+	}
+}
+
+func WithTVChanges() func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s", consts.TvURL, consts.ChangesURL)
+	}
+}
+
+func WithPeopleChanges() func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s", consts.PersonURL, consts.ChangesURL)
 	}
 }

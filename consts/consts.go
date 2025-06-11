@@ -99,6 +99,8 @@ const (
 	LangURL  = "&language="
 	IncludeAdult
 	KeywordQuery = "&keyword="
+	StartDateURL = "&start_date="
+	EndDateURL   = "&end_date="
 )
 
 // TODO: Properly name these sections
