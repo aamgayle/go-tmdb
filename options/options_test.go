@@ -56,6 +56,7 @@ var _ = Describe("Options tests", func() {
 		})
 	})
 
+	//Credit ID test
 	Context("When using the credit ID option function", func() {
 		It("should add the credit ID ", func() {
 			options := []func(*TMDBReqProps){
@@ -68,4 +69,32 @@ var _ = Describe("Options tests", func() {
 			Expect(tmdbReq.URL.Path).To(ContainSubstring("/credit/credit_id"))
 		})
 	})
+
+	//Certification option tests
+	Context("When using the TV certifications option function", func() {
+		It("should add the TV certification path", func() {
+			options := []func(*TMDBReqProps){
+				options.WithBaseURL(protocol + testHost + testSudDirectory),
+				options.WithTVCertifications(),
+			}
+
+			tmdbReq, err := NewTMDBRequest(options...)
+			Expect(err).To(BeNil())
+			Expect(tmdbReq.URL.Path).To(ContainSubstring("/certification/tv/list"))
+		})
+	})
+
+	Context("When using the movie certifications option function", func() {
+		It("should add the movie certification path", func() {
+			options := []func(*TMDBReqProps){
+				options.WithBaseURL(protocol + testHost + testSudDirectory),
+				options.WithMovieCertifications(),
+			}
+
+			tmdbReq, err := NewTMDBRequest(options...)
+			Expect(err).To(BeNil())
+			Expect(tmdbReq.URL.Path).To(ContainSubstring("/certification/movie/list"))
+		})
+	})
+
 })
