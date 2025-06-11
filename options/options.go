@@ -36,3 +36,16 @@ func WithCreditID(credit_id string) func(*types.TMDBReqProps) {
 		props.URL += fmt.Sprintf("%s/%s", consts.CreditURL, credit_id)
 	}
 }
+
+// Certification options
+func WithMovieCertifications() func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s%s", consts.CertificationURL, consts.MovieURL, consts.ListURL)
+	}
+}
+
+func WithTVCertifications() func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s%s", consts.CertificationURL, consts.TvURL, consts.ListURL)
+	}
+}
