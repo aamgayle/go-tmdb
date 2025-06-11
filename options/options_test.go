@@ -121,4 +121,41 @@ var _ = Describe("Options tests", func() {
 		})
 	})
 
+	//Changes list tests
+	Context("When using the Movie Changes option", func() {
+		It("should create the proper url", func() {
+			options := []func(*TMDBReqProps){
+				options.WithBaseURL(protocol + testHost + testSudDirectory),
+				options.WithMovieChanges(),
+			}
+			tmdbReq, err := NewTMDBRequest(options...)
+			Expect(err).To(BeNil())
+			Expect(tmdbReq.URL.Path).To(ContainSubstring("/movie/changes"))
+		})
+	})
+
+	Context("When using the People Changes option", func() {
+		It("should create the proper url", func() {
+			options := []func(*TMDBReqProps){
+				options.WithBaseURL(protocol + testHost + testSudDirectory),
+				options.WithPeopleChanges(),
+			}
+			tmdbReq, err := NewTMDBRequest(options...)
+			Expect(err).To(BeNil())
+			Expect(tmdbReq.URL.Path).To(ContainSubstring("/person/changes"))
+		})
+	})
+
+	Context("When using the TV Changes option", func() {
+		It("should create the proper url", func() {
+			options := []func(*TMDBReqProps){
+				options.WithBaseURL(protocol + testHost + testSudDirectory),
+				options.WithTVChanges(),
+			}
+			tmdbReq, err := NewTMDBRequest(options...)
+			Expect(err).To(BeNil())
+			Expect(tmdbReq.URL.Path).To(ContainSubstring("/tv/changes"))
+		})
+	})
+
 })
