@@ -50,3 +50,21 @@ func WithStartDate(date time.Time) func(*types.TMDBReqProps) {
 		props.URL += fmt.Sprintf("%s%s", consts.StartDateURL, date.Format("2006-01-02"))
 	}
 }
+
+func WithMovieChanges() func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s", consts.MovieURL, consts.ChangesURL)
+	}
+}
+
+func WithTVChanges() func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s", consts.TvURL, consts.ChangesURL)
+	}
+}
+
+func WithPeopleChanges() func(*types.TMDBReqProps) {
+	return func(props *types.TMDBReqProps) {
+		props.URL += fmt.Sprintf("%s%s", consts.PersonURL, consts.ChangesURL)
+	}
+}
